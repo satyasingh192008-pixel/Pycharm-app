@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: pycharm-app
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn a2:server --bind 0.0.0.0:$PORT

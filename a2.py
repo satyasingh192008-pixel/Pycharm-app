@@ -1,9 +1,11 @@
+import os
 from dash import Dash, html, Input, Output, dcc
 import plotly.express as px
 
 df = px.data.iris()
 
 app = Dash(__name__)
+server = app.server
 
 app.layout = html.Div([
     html.H1('Iris Flower Analysis Dashboard'),
@@ -42,4 +44,10 @@ def update_graph(selected_species):
     return fig
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8050))
+    is_render = "PORT" in os.environ
+    app.run(
+        host="0.0.0.0" if is_render else "127.0.0.1",
+        port=port,
+        debug=not is_render,
+    )

@@ -1,5 +1,5 @@
 
-from dash import Dash, html, Input, Output
+from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.SOLAR])
@@ -12,7 +12,7 @@ app.layout = dbc.Container([
         value='Type Text new now'
     ),
 
-    my_output := dbc.Markdown(
+    my_output := dcc.Markdown(
         id='my_output',
         children=''
     ),
