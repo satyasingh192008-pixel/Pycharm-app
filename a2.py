@@ -43,7 +43,8 @@ def update_graph(selected_species):
 
     return fig
 
-if __name__ == "__main__":
+def run_app():
+    """Run the Dash dev server locally or bind to $PORT when hosted."""
     port = int(os.environ.get("PORT", 8050))
     is_render = "PORT" in os.environ
     app.run(
@@ -51,3 +52,7 @@ if __name__ == "__main__":
         port=port,
         debug=not is_render,
     )
+
+
+if __name__ == "__main__":
+    run_app()
